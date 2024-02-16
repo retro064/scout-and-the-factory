@@ -1,3 +1,3 @@
-# scout-and-the-factory
-3D Unity game.
+# Scout and the Factory
+A 3D platformer game made in Unity.
 <hr>
