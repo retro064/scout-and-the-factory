@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f;
     private bool isGrounded;
     private Vector3 velocity;
+    public Transform groundCheck;
+    public LayerMask groundMask;
+    private float distanceRadius = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Jump!");
         }
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, distanceRadius, groundMask);
     }
 
     private void FixedUpdate()
