@@ -20,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         jumpNum = jumpNumMax;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // directional input
