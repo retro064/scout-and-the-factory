@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cam;
     public float speed = 5.0f;
     public float jumpHeight = 10.0f;
-    private const float GRAVITY = -9.81f*2f;
+    private const float GRAVITY = -9.81f * 2f;
     private bool grounded;
     private int jumpNumMax = 2;
     private int jumpNum;
