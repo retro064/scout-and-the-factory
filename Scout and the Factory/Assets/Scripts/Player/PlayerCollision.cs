@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float targetDistance = Vector3.Distance(transform.position, target.position);
+        // float targetDistance = Vector3.Distance(transform.position, target.position);
     }
 
     private void OnCollisionEnter(Collision collision)
