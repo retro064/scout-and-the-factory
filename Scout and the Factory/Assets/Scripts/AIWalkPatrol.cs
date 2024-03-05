@@ -13,6 +13,7 @@ public class AIWalkPatrol : MonoBehaviour
     private Vector3 destPoint;
     private bool walkPointSet;
     public float range;
+    public float walkSpeed = 2.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +27,21 @@ public class AIWalkPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Patrol();
+        
     }
 
-    void Patrol()
+    public void Patrol()
     {
         if (!walkPointSet) SearchForDest();
-        if (walkPointSet) agent.SetDestination(destPoint);
+        if (walkPointSet)
+        {
+            agent.SetDestination(destPoint);
+            GetComponent<NavMeshAgent>().speed = walkSpeed;
+        }
         if (Vector3.Distance(transform.position, destPoint) < 10) walkPointSet = false;
     }
 
-    void SearchForDest()
+    private void SearchForDest()
     {
         float x = Random.Range(-range, range);
         float z = Random.Range(-range, range);

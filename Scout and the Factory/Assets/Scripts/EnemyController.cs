@@ -8,12 +8,15 @@ public class EnemyController : MonoBehaviour
     public float lookRadius = 10f;
     private Transform target;
     private NavMeshAgent agent;
+    private AIWalkPatrol walkPatrol;
+    public float runSpeed = 15.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        walkPatrol = GetComponent<AIWalkPatrol>();
     }
 
     // Update is called once per frame
@@ -24,12 +27,16 @@ public class EnemyController : MonoBehaviour
         if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
+            GetComponent<NavMeshAgent>().speed = runSpeed;
+        } else
+        {
+            walkPatrol.Patrol();
         }
 
         if (distance <= agent.stoppingDistance)
         {
-            // attack the target
             FaceTarget();
+            // invoke enemy attack function here
         }
     }
 

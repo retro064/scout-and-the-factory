@@ -9,13 +9,17 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // float targetDistance = Vector3.Distance(transform.position, target.position);
+        if (Input.GetButtonDown("Interact") && NPCDialog.inBound)
+        {
+            Debug.Log("Hello World!");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,6 +33,11 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
+        NPCDialog.inBound = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        NPCDialog.inBound = false;
     }
 }
