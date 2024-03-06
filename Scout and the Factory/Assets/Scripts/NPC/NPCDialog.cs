@@ -6,25 +6,30 @@ using TMPro;
 
 public class NPCDialog : MonoBehaviour
 {
-    public static bool inBound;
+    
     public float lookRadius = 10f;
     public string dialog;
-    public Text dialogText;
+    public TextMeshProUGUI dialogText;
     public GameObject dialogContainer;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        dialogText.text = dialog;
     }
 
     // Update is called once per frame
     void Update()
     {
+        DisplayText(PlayerCollision.inBound);
+    }
+
+    public void DisplayText(bool inBound)
+    {
         if (inBound)
-        {
-            // make dialogContainer visible.
-        }
+            dialogContainer.SetActive(true);
+        else
+            dialogContainer.SetActive(false);
     }
 
     void OnDrawGizmosSelected()

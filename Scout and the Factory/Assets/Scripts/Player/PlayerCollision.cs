@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     private Transform target;
+    public static bool inBound;
 
     // Start is called before the first frame update
     void Start()
@@ -15,10 +16,11 @@ public class PlayerCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // float targetDistance = Vector3.Distance(transform.position, target.position);
-        if (Input.GetButtonDown("Interact") && NPCDialog.inBound)
+        if (Input.GetButtonDown("Interact") && inBound)
         {
-            Debug.Log("Hello World!");
+            // lock the player's movement
         }
     }
 
@@ -33,11 +35,11 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        NPCDialog.inBound = true;
+        inBound = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        NPCDialog.inBound = false;
+        inBound = false;
     }
 }
