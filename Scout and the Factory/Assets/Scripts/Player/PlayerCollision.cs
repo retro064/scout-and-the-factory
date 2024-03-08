@@ -6,6 +6,7 @@ public class PlayerCollision : MonoBehaviour
 {
     private Transform target;
     public static bool inBound;
+    private bool inState = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +17,16 @@ public class PlayerCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // float targetDistance = Vector3.Distance(transform.position, target.position);
-        if (Input.GetButtonDown("Interact") && inBound)
+        if ((Input.GetButtonDown("Interact") && inBound) && !inState)
         {
-            // lock the player's movement
+            NPCDialog.talking = true;
+            inState = true;
+            // ***lock the player's movement***
+        } else if ((Input.GetButtonDown("Interact") && NPCDialog.talking) && inState)
+        {
+            NPCDialog.talking = false;
+            inState = false;
         }
     }
 

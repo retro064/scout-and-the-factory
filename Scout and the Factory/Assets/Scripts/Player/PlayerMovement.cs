@@ -63,10 +63,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = -2.0f;
             jumpNum = jumpNumMax;
         }
 
         grounded = Physics.CheckSphere(groundCheck.position, distanceRadius, groundMask);
+
+        Debug.Log(grounded);
     }
 }
