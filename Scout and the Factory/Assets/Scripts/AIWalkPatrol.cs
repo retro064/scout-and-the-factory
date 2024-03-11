@@ -11,11 +11,11 @@ public class AIWalkPatrol : MonoBehaviour
     private LayerMask playerMask;
     // patrol
     private Vector3 destPoint;
-    private bool walkPointSet;
+    protected bool walkPointSet;
     public float range;
     public float walkSpeed = 2.5f;
+    public bool walkable = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -24,10 +24,20 @@ public class AIWalkPatrol : MonoBehaviour
         playerMask = LayerMask.GetMask("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (walkable)
+        {
+            Patrol();
+            if (PlayerMovement.currentState == PlayerState.interact)
+            {
+                agent.speed = 0;
+            }
+            else
+            {
+                agent.speed = walkSpeed;
+            }
+        }
     }
 
     public void Patrol()
@@ -36,7 +46,7 @@ public class AIWalkPatrol : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(destPoint);
-            GetComponent<NavMeshAgent>().speed = walkSpeed;
+            agent.speed = walkSpeed;
         }
         if (Vector3.Distance(transform.position, destPoint) < 10) walkPointSet = false;
     }

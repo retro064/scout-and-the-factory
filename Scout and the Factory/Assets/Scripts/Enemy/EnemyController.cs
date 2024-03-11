@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private AIWalkPatrol walkPatrol;
     public float runSpeed = 15.0f;
 
-    // Start is called before the first frame update
     void Start()
     {
         target = PlayerManager.instance.player.transform;
@@ -19,8 +18,7 @@ public class EnemyController : MonoBehaviour
         walkPatrol = GetComponent<AIWalkPatrol>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float distance = Vector3.Distance(target.position, transform.position);
 
@@ -36,7 +34,7 @@ public class EnemyController : MonoBehaviour
         if (distance <= agent.stoppingDistance)
         {
             FaceTarget();
-            // invoke enemy attack function here
+            // *** invoke enemy attack function here ***
         }
     }
 
