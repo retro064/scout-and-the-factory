@@ -63,8 +63,7 @@ public class PlayerMovement : MonoBehaviour
             jumpNum--;
         }
 
-        velocity.y += GRAVITY * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        
     }
 
     void FixedUpdate()
@@ -78,6 +77,9 @@ public class PlayerMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(speed * Time.deltaTime * moveDir.normalized);
         }
+
+        velocity.y += GRAVITY * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 
         if (grounded && velocity.y < 0)
         {
