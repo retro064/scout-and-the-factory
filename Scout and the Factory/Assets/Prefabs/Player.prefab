@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  speed: 12
+  speed: 10
   jumpHeight: 5
   turnSmoothTime: 0.1
 --- !u!114 &5958034640167788843

@@ -27,11 +27,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MovingPlatform"))
-        {
-            print("yes");
-            transform.SetPositionAndRotation(other.transform.position, other.transform.rotation);
-        }
+
     }
 
     private void OnTriggerExit(Collider other)
